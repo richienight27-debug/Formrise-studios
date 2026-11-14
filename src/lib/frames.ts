@@ -1,6 +1,7 @@
 "use client";
 
 import meta from "./frames.json";
+import { asset } from "./asset";
 
 /**
  * The hero sequence is two clips played back to back on one canvas:
@@ -20,7 +21,7 @@ export const frameSrc = (i: number, set: FrameSet) => {
   let local = i;
   for (const seg of SEGMENTS) {
     if (local < seg.count) {
-      return `/frames/${set}/${seg.id}/f_${String(local + 1).padStart(4, "0")}.webp?v=${FRAME_VERSION}`;
+      return asset(`/frames/${set}/${seg.id}/f_${String(local + 1).padStart(4, "0")}.webp?v=${FRAME_VERSION}`);
     }
     local -= seg.count;
   }

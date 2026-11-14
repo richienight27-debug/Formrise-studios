@@ -7,8 +7,17 @@ Agency site built with Next.js 16 (App Router), React 19, TypeScript and Tailwin
 ```bash
 npm install
 npm run dev     # http://localhost:3000
-npm run build && npm start
+npm run build   # static export to ./out
+npm start       # serve ./out locally
 ```
+
+## Deploy
+
+The site is a static export. Every push to `main` runs `.github/workflows/deploy.yml`, which
+builds it and publishes `./out` to GitHub Pages under `/<repo-name>/`. In the repository's
+**Settings → Pages**, the source must be set to **GitHub Actions**.
+
+Root-absolute asset paths go through `asset()` in `src/lib/asset.ts` so they pick up that prefix.
 
 ## Where things live
 

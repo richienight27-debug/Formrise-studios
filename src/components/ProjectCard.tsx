@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Project } from "@/content/site";
+import { asset } from "@/lib/asset";
 
 const HUES: Record<Project["hue"], string> = {
   sunrise: "linear-gradient(160deg,#ffd27a 0%,#ff6a3d 55%,#ff3d8b 100%)",
@@ -61,7 +62,7 @@ export default function ProjectCard({
             </div>
             <div className="relative aspect-[16/10] overflow-hidden">
               <Image
-                src={p.image}
+                src={asset(p.image)}
                 alt={`Homepage of ${p.title}`}
                 fill
                 sizes="(min-width: 768px) 45vw, 90vw"

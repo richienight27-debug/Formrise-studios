@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { FRAME_COUNT, FRAME_VERSION, SKY_COUNT, loadFrames, nearestFrame, type FrameSet } from "@/lib/frames";
 import { store, useStore } from "@/lib/store";
+import { asset } from "@/lib/asset";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -208,7 +209,7 @@ export default function Hero() {
           <canvas
             ref={canvas}
             className="absolute inset-0 h-full w-full"
-            style={{ background: `url(/images/poster.webp?v=${FRAME_VERSION}) center/cover no-repeat` }}
+            style={{ background: `url(${asset(`/images/poster.webp?v=${FRAME_VERSION}`)}) center/cover no-repeat` }}
             aria-hidden
           />
           {/* Legibility gradients */}

@@ -7,6 +7,7 @@ import DynamicIsland from "@/components/DynamicIsland";
 import Preloader from "@/components/Preloader";
 import GradientBackground from "@/components/GradientBackground";
 import frames from "@/lib/frames.json";
+import { asset } from "@/lib/asset";
 
 // Archivo is variable on weight AND width: wide for headlines, and the preloader
 // wordmark animates both axes in response to the pointer.
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: site.name,
     description: site.description,
-    images: ["/images/poster.webp"],
+    images: [asset("/images/poster.webp")],
   },
 };
 
@@ -48,7 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <head>
-        <link rel="preload" as="image" href={`/images/poster.webp?v=${frames.v}`} />
+        <link rel="preload" as="image" href={asset(`/images/poster.webp?v=${frames.v}`)} />
       </head>
       <body>
         <GradientBackground />

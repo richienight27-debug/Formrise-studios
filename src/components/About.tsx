@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { founder } from "@/content/site";
+import { asset } from "@/lib/asset";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -96,7 +97,7 @@ export default function About() {
             {/* the white studio backdrop multiplies into the sunset gradient */}
             <div data-photo className="absolute inset-0 mix-blend-multiply">
               <Image
-                src={founder.photo}
+                src={asset(founder.photo)}
                 alt={`${founder.name}, ${founder.role} of Formrise Studios`}
                 fill
                 sizes="(min-width: 768px) 40vw, 100vw"
