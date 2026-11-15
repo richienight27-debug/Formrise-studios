@@ -1,0 +1,16 @@
+# Netlify build settings. The site is a static export (see next.config.ts), served from the
+# domain root here; PAGES_BASE_PATH is only set by the GitHub Pages workflow.
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "24"
+  # skips ffmpeg-static's binary download; it's only needed for `npm run frames`
+  NPM_FLAGS = "--ignore-scripts"
+
+# Hero frames and the poster are versioned with ?v=, so browsers can keep them for a year
+[[headers]]
+  for = "/frames/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
