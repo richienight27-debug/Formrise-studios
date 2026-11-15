@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { principles } from "@/content/site";
+import TypeLabel from "./TypeLabel";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -50,7 +51,7 @@ export default function Manifesto() {
   return (
     <section id="intro" ref={root} className="relative px-5 py-28 md:px-10 md:py-44">
       <div className="mb-10 flex items-center gap-3 font-label text-[10px] uppercase tracking-widest text-cream/50 md:text-xs">
-        <span className="size-2 bg-coral" /> The studio
+        <span className="size-2 bg-coral" /> <TypeLabel text="The studio" />
       </div>
       <p
         data-para

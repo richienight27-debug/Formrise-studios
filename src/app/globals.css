@@ -101,6 +101,23 @@ html.is-loading body {
   50% { opacity: 1; }
 }
 
+/* typewriter caret */
+.type-caret {
+  animation: caret 1s steps(1) infinite;
+}
+@keyframes caret {
+  50% { opacity: 0; }
+}
+
+/* falling star */
+.star-twinkle {
+  animation: twinkle-star 1.6s ease-in-out infinite;
+}
+@keyframes twinkle-star {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(0.78) rotate(45deg); }
+}
+
 /* Process route: boat bob, drifting sea, pulse on the current stop */
 .boat-bob {
   transform-box: fill-box;

@@ -7,10 +7,11 @@ import Process from "@/components/Process";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ShootingStar from "@/components/ShootingStar";
 
 export default function Home() {
   return (
-    <>
+    <div className="relative">
       <main>
         <Hero />
         <Manifesto />
@@ -22,6 +23,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
-    </>
+      <ShootingStar />
+    </div>
   );
 }

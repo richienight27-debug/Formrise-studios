@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { services } from "@/content/site";
+import TypeLabel from "./TypeLabel";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,6 +14,16 @@ export default function Services() {
 
   useGSAP(
     () => {
+      // the cream sheet opens out from a narrower, rounder card as it scrolls in
+      gsap.fromTo(
+        "[data-sv-sheet]",
+        { clipPath: "inset(8% 6% 0% 6% round 80px)" },
+        {
+          clipPath: "inset(0% 0% 0% 0% round 48px)",
+          ease: "none",
+          scrollTrigger: { trigger: root.current, start: "top bottom", end: "top 20%", scrub: true },
+        },
+      );
       gsap.from("[data-sv-title] .w", {
         yPercent: 110,
         duration: 1.2,
@@ -30,7 +41,11 @@ export default function Services() {
   );
 
   return (
-    <section id="services" ref={root} className="relative px-5 py-24 md:px-10 md:py-36">
+    <section id="services" ref={root} className="relative">
+      <div data-sv-sheet className="relative bg-cream px-5 py-24 text-ink md:px-10 md:py-36">
+      <div className="mb-8 flex items-center gap-3 font-label text-[10px] uppercase tracking-widest text-ink/50 md:text-xs">
+        <span className="size-2 bg-coral" /> <TypeLabel text="Services" />
+      </div>
       <div className="mb-14 flex flex-col justify-between gap-6 md:mb-20 md:flex-row md:items-end">
         <h2 data-sv-title className="font-display text-[14vw] font-semibold leading-[0.88] tracking-[-0.05em] md:text-[8vw]">
           <span className="line-mask"><span className="w block">What we</span></span>
@@ -38,7 +53,7 @@ export default function Services() {
             <span className="w block font-serif font-normal italic text-sunset">make.</span>
           </span>
         </h2>
-        <p className="max-w-sm text-cream/60 md:text-lg">
+        <p className="max-w-sm text-ink/60 md:text-lg">
           Five disciplines, one team. Every engagement is shaped around what actually moves your brand forward.
         </p>
       </div>
@@ -46,7 +61,7 @@ export default function Services() {
       <ul>
         {services.map((s, i) => (
           <li key={s.title} data-sv-row className="group relative">
-            <div data-line className="h-px w-full bg-cream/20" />
+            <div data-line className="h-px w-full bg-ink/15" />
             <div className="relative overflow-hidden">
               {/* hover fill */}
               <div
@@ -55,7 +70,7 @@ export default function Services() {
               />
               <div className="relative grid gap-4 py-8 transition-colors duration-500 group-hover:text-ink md:grid-cols-12 md:items-center md:gap-8 md:px-4 md:py-10">
                 <span className="line-mask md:col-span-1">
-                  <span data-rise className="block font-label text-xs text-amber transition-colors group-hover:text-ink">
+                  <span data-rise className="block font-label text-xs text-coral transition-colors group-hover:text-ink">
                     0{i + 1}
                   </span>
                 </span>
@@ -68,7 +83,7 @@ export default function Services() {
                   </span>
                 </h3>
                 <p className="line-mask md:col-span-4">
-                  <span data-rise className="block text-cream/60 transition-colors group-hover:text-ink/80">
+                  <span data-rise className="block text-ink/60 transition-colors group-hover:text-ink/80">
                     {s.body}
                   </span>
                 </p>
@@ -76,7 +91,7 @@ export default function Services() {
                   {s.tags.slice(0, 2).map((t) => (
                     <span
                       key={t}
-                      className="rounded-full border border-cream/20 px-3 py-1 text-xs text-cream/70 transition-colors group-hover:border-ink/30 group-hover:text-ink"
+                      className="rounded-full border border-ink/20 px-3 py-1 text-xs text-ink/70 transition-colors group-hover:border-ink/30 group-hover:text-ink"
                     >
                       {t}
                     </span>
@@ -86,8 +101,9 @@ export default function Services() {
             </div>
           </li>
         ))}
-        <li className="h-px w-full bg-cream/20" aria-hidden />
+        <li className="h-px w-full bg-ink/15" aria-hidden />
       </ul>
+      </div>
     </section>
   );
 }

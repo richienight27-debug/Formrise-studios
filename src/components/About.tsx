@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { founder } from "@/content/site";
 import { asset } from "@/lib/asset";
+import TypeLabel from "./TypeLabel";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -83,7 +84,7 @@ export default function About() {
   return (
     <section id="about" ref={root} className="relative px-5 py-24 md:px-10 md:py-40">
       <div className="mb-10 flex items-center gap-3 font-label text-[10px] uppercase tracking-widest text-cream/50 md:mb-16 md:text-xs">
-        <span className="size-2 bg-violet" /> The founder
+        <span className="size-2 bg-violet" /> <TypeLabel text="The founder" />
       </div>
 
       <div className="grid gap-12 md:grid-cols-12 md:gap-10">
