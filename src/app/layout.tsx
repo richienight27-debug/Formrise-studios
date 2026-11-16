@@ -26,14 +26,30 @@ const fraunces = Fraunces({
 });
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", display: "swap" });
 
+// Absolute address used for link previews (WhatsApp, Instagram, X…). SITE_URL wins if set
+// (the GitHub Pages workflow sets it); on Netlify, URL is the site's main address and follows
+// a custom domain once one is added; otherwise fall back to the Netlify subdomain.
+// Preview image paths stay plain: Next.js appends them to this URL, which already
+// carries the GitHub Pages /<repo> prefix when there is one.
+const siteUrl = process.env.SITE_URL || process.env.URL || "https://formrisestudios.netlify.app";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://formrisestudios.com"), // PLACEHOLDER: your real domain
+  metadataBase: new URL(siteUrl),
   title: `${site.name} | Design & Development Studio`,
   description: site.description,
   openGraph: {
     title: site.name,
     description: site.description,
-    images: [asset("/images/poster.webp")],
+    url: "./",
+    siteName: site.name,
+    type: "website",
+    images: [{ url: "/images/poster.webp", width: 1280, height: 718, alt: "Formrise Studios: a sunset sky over clouds" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.name,
+    description: site.description,
+    images: ["/images/poster.webp"],
   },
 };
 
